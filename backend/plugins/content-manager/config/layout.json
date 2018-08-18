@@ -1,0 +1,19 @@
+{
+  "goal": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  },
+  "todo": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      },
+      "completed": {
+        "appearance": ""
+      }
+    }
+  }
+}

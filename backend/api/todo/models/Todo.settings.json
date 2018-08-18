@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "todo",
+  "info": {
+    "name": "todo",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "completed": {
+      "type": "boolean"
+    },
+    "goal": {
+      "model": "goal",
+      "via": "todo"
+    }
+  }
+}
