@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
-import Home from './components/Home';
-import About from './components/About';
+import {Link } from 'react-router-dom';
 import GoalsList from './components/GoalsList';
 import AddGoalForm from './components/AddGoalForm';
 
@@ -28,7 +26,7 @@ class App extends Component {
       addedGoal
     } = this.props;
     let allGoals = goals;
-
+    
     if (addedGoal.name) {
       allGoals = [...goals, addedGoal];
     }
@@ -37,12 +35,9 @@ class App extends Component {
       <div>
         Pacer
         <br/>
-        <AddGoalForm addGoal={addGoal} />
-        <GoalsList goals={allGoals} />
-        <Link to="/about">About</Link>
         <main>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
+          <AddGoalForm addGoal={addGoal} />
+          <GoalsList goals={allGoals} />
         </main>
       </div>
     );

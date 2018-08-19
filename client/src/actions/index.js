@@ -50,7 +50,6 @@ export function goalsFetchData(url) {
 
 
 export function goalsPostDataSuccess(goal) {
-  console.log('post');
   return {
     type: GOAL_POST_DATA,
     goal

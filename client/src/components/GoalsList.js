@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import TodosList from './TodosList';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { slugify } from '../utils';
 
 class GoalsList extends Component {
   render() {
@@ -7,8 +9,9 @@ class GoalsList extends Component {
     
     const list = goals.map(goal => (
       <li key={goal._id}>
+        <Link to={slugify(goal.name)} params={{ name: goal.name}}>
         {goal.name}
-        <TodosList todos={goal.todo} />
+        </Link>
       </li>
     ));
     
@@ -18,6 +21,10 @@ class GoalsList extends Component {
       </ul>
     );
   }
+}
+
+GoalsList.propTypes = {
+  goals: PropTypes.array.isRequired
 }
 
 export default GoalsList;
