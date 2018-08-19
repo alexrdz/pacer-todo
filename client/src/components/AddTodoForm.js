@@ -14,7 +14,7 @@ class AddTodoForm extends Component {
   
   onSubmit = e => {
     e.preventDefault();
-    // this.props.addForm({name: this.state.text});
+    this.props.addTodo({name: this.state.text, goal: this.props.goalId});
     this.setState(() => ({text: ''}));
   }
 

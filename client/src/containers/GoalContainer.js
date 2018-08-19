@@ -1,6 +1,14 @@
 import {connect} from 'react-redux';
 import { slugify } from '../utils';
 import Goal from '../components/Goal';
+import {goalsFetchData, todosPostData} from '../actions';
+
+function mapDispatchToProps (dispatch) {
+  return {
+    fetchGoals: (url) => dispatch(goalsFetchData(url)),
+    addTodo: (todo) => dispatch(todosPostData(todo))
+  };
+}
 
 function mapStateToProps (state, nextProps) {
   const goalSlug = nextProps.match.params.goal;
@@ -12,4 +20,4 @@ function mapStateToProps (state, nextProps) {
   };
 }
 
-export default connect(mapStateToProps)(Goal);
+export default connect(mapStateToProps, mapDispatchToProps)(Goal);

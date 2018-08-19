@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+import Todo from './Todo';
 
 class TodosList extends Component {
 
@@ -10,11 +11,7 @@ class TodosList extends Component {
 
     return (
       <ul>
-        {todos.map(todo => (
-          <li key={todo._id} data-id={todo._id} onClick={this.toggleTodo}>
-            {todo.name} - {todo.completed ? "done" : "not done"}
-          </li>
-        ))}
+        {todos.map(todo => <Todo key={todo._id} todo={todo} toggleTodo={this.toggleTodo} />)}
       </ul>
     );
   }
