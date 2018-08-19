@@ -1,20 +1,23 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+import Todo from './Todo';
 
 class TodosList extends Component {
 
-  toggleTodo = e => console.log('e', e.target.dataset.id);
+  toggleTodo = e => {
+    const todoId = e.target.dataset.id;
+    const completed = !e.target.dataset.completed;
+    console.log('toggled', todoId, completed);
+    return this.props.toggleTodo({_id: todoId, completed: !completed});
+  };
 
   render() {
     const { todos } = this.props;
+    const pendingTodos = todos.filter(todo => !todo.completed).splice(0,3);
 
     return (
       <ul>
-        {todos.map(todo => (
-          <li key={todo._id} data-id={todo._id} onClick={this.toggleTodo}>
-            {todo.name} - {todo.completed ? "done" : "not done"}
-          </li>
-        ))}
+        {pendingTodos.map(todo => <Todo key={todo._id} todo={todo} toggleTodo={this.toggleTodo} />)}
       </ul>
     );
   }

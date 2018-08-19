@@ -5,7 +5,8 @@ import {
   GOALS_HAS_ERRORED,
   GOALS_IS_LOADING,
   GOALS_FETCH_DATA_SUCCESS,
-  GOAL_POST_DATA
+  GOAL_POST_DATA,
+  API_GOALS
 } from "../constants";
 
 export function goalsHasErrored(bool) {
@@ -47,6 +48,23 @@ export function goalsFetchData(url) {
   };
 }
 
+export function goalsFetchGoalData(goalId) {
+  return dispatch => {
+    dispatch(goalsIsLoading(true));
+    fetch(`${API_GOALS}${goalId}`)
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        dispatch(goalsIsLoading(false));
+        return response.json();
+      })
+      .then(response => response)
+      .then(() => dispatch(goalsFetchData(API_GOALS)))
+      .catch(() => dispatch(goalsHasErrored(true)));
+  };
+}
+
 
 
 export function goalsPostDataSuccess(goal) {
@@ -75,3 +93,51 @@ export function goalsPostData(goal) {
   }
 }
 
+
+
+export function todosPostData(todo) {
+  return dispatch => {
+    fetch('http://localhost:1337/todo/', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(todo)
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log('data', data);
+      return dispatch(goalsFetchGoalData(data.goal._id))
+    })
+    .catch((error) => console.log('error', error))
+  }
+}
+
+
+
+export function todosToggleTodo(todo) {
+  return dispatch => {
+    console.log('todo', todo);
+    fetch(`http://localhost:1337/todo/${todo._id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(todo)
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log('data', data);
+      // get goalId = data.goal._id
+      // fetch goal and update state
+      return dispatch(goalsFetchGoalData(data.goal._id))
+    })
+    .catch((error) => console.log('error', error))
+  }
+}
