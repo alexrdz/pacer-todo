@@ -13,14 +13,15 @@ class Goal extends Component {
   render() {
     const { 
       goal,
-      addTodo
+      addTodo,
+      toggleTodo
      } = this.props;
 
     if (goal) {
       return (
         <div>
         <h2>{goal.name}</h2>
-        <TodosList todos={goal.todo} />
+        <TodosList todos={goal.todo} toggleTodo={toggleTodo} />
         <AddTodoForm addTodo={addTodo} goalId={goal._id} />
         </div>
       );

@@ -4,8 +4,8 @@ function Todo (props) {
   const {todo, toggleTodo} = props;
 
   return (
-    <li key={todo._id} data-id={todo._id} onClick={toggleTodo}>
-      {todo.name} - {todo.completed ? "done" : "not done"}
+    <li key={todo._id} data-id={todo._id} data-completed={todo.completed} onClick={toggleTodo}>
+      {todo.name}
     </li>
   );
 }

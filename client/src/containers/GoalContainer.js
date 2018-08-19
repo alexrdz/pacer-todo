@@ -1,12 +1,13 @@
 import {connect} from 'react-redux';
 import { slugify } from '../utils';
 import Goal from '../components/Goal';
-import {goalsFetchData, todosPostData} from '../actions';
+import {goalsFetchData, todosPostData, todosToggleTodo} from '../actions';
 
 function mapDispatchToProps (dispatch) {
   return {
     fetchGoals: (url) => dispatch(goalsFetchData(url)),
-    addTodo: (todo) => dispatch(todosPostData(todo))
+    addTodo: (todo) => dispatch(todosPostData(todo)),
+    toggleTodo: (todo) => dispatch(todosToggleTodo(todo))
   };
 }
 

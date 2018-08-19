@@ -110,6 +110,30 @@ export function todosPostData(todo) {
     })
     .then(data => {
       console.log('data', data);
+      return dispatch(goalsFetchGoalData(data.goal._id))
+    })
+    .catch((error) => console.log('error', error))
+  }
+}
+
+
+
+export function todosToggleTodo(todo) {
+  return dispatch => {
+    console.log('todo', todo);
+    fetch(`http://localhost:1337/todo/${todo._id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(todo)
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log('data', data);
       // get goalId = data.goal._id
       // fetch goal and update state
       return dispatch(goalsFetchGoalData(data.goal._id))
