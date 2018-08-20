@@ -7,7 +7,7 @@ class TodosList extends Component {
   toggleTodo = e => {
     const todoId = e.target.dataset.id;
     const completed = !e.target.dataset.completed;
-    console.log('toggled', todoId, completed);
+
     return this.props.toggleTodo({_id: todoId, completed: !completed});
   };
 
