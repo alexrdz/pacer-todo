@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import {Link } from 'react-router-dom';
+import Nav from './components/Nav';
+import AppNav from './components/AppNav';
 import GoalsList from './components/GoalsList';
-import AddGoalForm from './components/AddGoalForm';
+
+const logo = './assets/img/pacer-logo.svg';
 
 class App extends Component {
 
@@ -33,11 +36,11 @@ class App extends Component {
 
     return (
       <div>
-        Pacer
-        <br/>
+        <Nav />
         <main>
-          <AddGoalForm addGoal={addGoal} />
-          <GoalsList goals={allGoals} />
+          <img src={logo} className="d-block mx-auto mb-4" />
+          
+          <GoalsList goals={allGoals} addGoal={addGoal} />
         </main>
       </div>
     );

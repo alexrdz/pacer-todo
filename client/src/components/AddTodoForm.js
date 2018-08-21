@@ -4,7 +4,7 @@ class AddTodoForm extends Component {
 
   state = {
     text: ''
-  }
+  };
 
   onChange = e => {
     const text = e.target.value;
@@ -20,10 +20,15 @@ class AddTodoForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
+      <form 
+        className="col-12 col-md-8 pt-5 px-2 mb-5 border-bottom mx-auto"
+        onSubmit={this.onSubmit}>
         <input 
+          ref={input => input && input.focus()}
+          autoFocus
+          className="form-control border-0" 
           type="text" 
-          placeholder="What is your goal?"
+          placeholder="Add a to-do and hit Enter..."
           onChange={this.onChange}
           value={this.state.text}
           />

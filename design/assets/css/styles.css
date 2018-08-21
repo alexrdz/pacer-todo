@@ -1,0 +1,44 @@
+:root {
+  --grey: #636161;
+  --grey-light: #D8D8D8;
+  --grey-dark: #404040;
+  --green: #1A4A40;
+  --green-light: #50E3C2;
+  --link-color: #636161;
+}
+
+body {
+  color: var(--grey);
+  font-family: 'PT Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: var(--green);
+  font-family: 'Anton', sans-serif;
+  font-weight: 300;
+}
+
+a {
+  color: var(--link-color);
+  transition: all .3s ease-in;
+}
+.remove {
+  fill: var(--green-light);
+  transition: fill .3s ease-in-out;
+}
+.remove:hover {
+  fill: var(--green);
+}
+
+.border-thick {
+  border-width: 3px !important;
+}
+
+.color-green {
+  color: var(--green);
+}
+
+.site-footer {
+  border-color: var(--green) !important;
+}

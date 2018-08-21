@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 class AddGoalForm extends Component {
 
   state = {
-    text: ''
-  }
+    text: '',
+  };
+
 
   onChange = e => {
     const text = e.target.value;
@@ -19,11 +20,16 @@ class AddGoalForm extends Component {
   }
 
   render() {
+    const slideClass = this.props.showForm ? ' d-block slideDown' : ' slideUp';
+    
+
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className={`col-12 pt-5 px-2 mb-5 border-bottom mx-auto d-none ` + slideClass} onSubmit={this.onSubmit}>
         <input 
+          ref={input => input && input.focus()}
+          className="form-control border-0" 
           type="text" 
-          placeholder="What is your goal?"
+          placeholder="Add a Goal and hit Enter..."
           onChange={this.onChange}
           value={this.state.text}
           />

@@ -7,6 +7,8 @@ import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
 import AppContainer from './containers/AppContainer';
 import registerServiceWorker from './registerServiceWorker';
+import './assets/css/bootstrap.min.css';
+import './assets/css/styles.css';
 
 const store = configureStore();
 
